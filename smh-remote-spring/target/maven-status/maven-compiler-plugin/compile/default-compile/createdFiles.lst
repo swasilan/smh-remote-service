@@ -1,0 +1,6 @@
+hello\service\Swagger2Config.class
+hello\service\MyService.class
+hello\controller\HelloController.class
+hello\Application.class
+hello\service\Config.class
+hello\service\RequestResponseFilter.class

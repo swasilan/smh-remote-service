@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>smh-remote-service</artifactId>
+        <groupId>org.springframework</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>smh-remote-servicetest</artifactId>
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.install.skip>true</maven.install.skip>
+
+        <!-- Allows us to disable volume mounting on TeamCity. Locally we need this for hot deploy. -->
+        <deployments-host-volume-path>${project.basedir}/../smh-remote-spring/target/shared-deployments:
+        </deployments-host-volume-path>
+        <docker.autoCreateCustomNetworks>true</docker.autoCreateCustomNetworks>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>servicetest</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <configuration>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                            <includes>
+                                <!-- SVT = Servicetests -->
+                                <include>**/*SVT.java</include>
+                                <!-- CDC = Consumer driven contracts -->
+                                <include>**/*CDC.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <configuration>
+                            <!-- When the container fails to start, we want to see what went wrong. Also helpful
+                             for builds on the CI server. -->
+                            <showLogs>true</showLogs>
+                            <!-- Do not pull this image, because we want to use the locally built one. -->
+                            <imagePullPolicy>Never</imagePullPolicy>
+                            <images>
+                                <image>
+                                    <alias>remote-service-spring</alias>
+                                    <name>docker-registry.mobicorp.ch/mobi/smh/remote:${project.version}</name>
+                                    <run>
+                                        <namingStrategy>alias</namingStrategy>
+
+                                        <network>
+                                            <mode>custom</mode>
+                                            <name>custom_network</name>
+                                            <alias>spring</alias>
+                                        </network>
+                                        <ports>
+                                            <port>8080:8000</port>
+                                            <port>8443:8443</port>
+                                            <port>8787:8787</port>
+                                        </ports>
+                                        <envPropertyFile>${project.basedir}/src/test/docker/smh-remote.properties</envPropertyFile>
+                                    </run>
+                                </image>
+                                <image>
+                                    <alias>remote-service-wiremock</alias>
+                                    <name>rodolpheche/wiremock:2.23.2</name>
+                                    <run>
+                                        <namingStrategy>alias</namingStrategy>
+                                        <!-- Makes sure that we always use the latest base images. They may change in the mobi docker registy. -->
+                                        <imagePullPolicy>Always</imagePullPolicy>
+                                        <network>
+                                            <mode>custom</mode>
+                                            <name>custom_network</name>
+                                            <alias>wiremock</alias>
+                                        </network>
+                                        <ports>
+                                            <port>9180:8080</port>
+                                        </ports>
+                                        <env>
+                                            <WIREMOCK_ARGS>--local-response-templating</WIREMOCK_ARGS>
+                                        </env>
+                                        <volumes>
+                                            <bind>
+                                                <volume>
+                                                    ${project.basedir}/../smh-remote-spring/src/test/resources/wiremock:/home/wiremock
+                                                </volume>
+                                            </bind>
+                                        </volumes>
+                                    </run>
+                                </image>
+                            </images>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>start</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <!-- If the container is already started, stop it. -->
+                                    <goal>stop</goal>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

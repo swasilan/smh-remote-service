@@ -1,0 +1,24 @@
+
+Osquid:S1197C"8Move the array designator from the variable to the type.(‘£Ö±
+Osquid:S1197_"8Move the array designator from the variable to the type.(¥ÞÌâ
+jsquid:S1192}"NDefine a constant instead of duplicating this literal "RemoteUser : " 4 times.(Ó½©Øúÿÿÿÿ
+asquid:S1192@"JDefine a constant instead of duplicating this literal "Header : " 4 times.(ÌŠˆÕ
+hsquid:S11923"LDefine a constant instead of duplicating this literal "AuthType : " 4 times.(¾š€èýÿÿÿÿ
+nsquid:S3776 "RRefactor this method to reduce its Cognitive Complexity from 45 to the 15 allowed.(€ÿ£Ðÿÿÿÿÿ
+Usquid:S2254"=Remove use of this unsecured "getRequestedSessionId()" method(ë‹ìÉ
+Nsquid:S1854/"7Remove this useless assignment to local variable "str".(£àÞ™
+Ssquid:S18543"7Remove this useless assignment to local variable "str".(¾š€èýÿÿÿÿ
+Ssquid:S18542"7Remove this useless assignment to local variable "str".(Ÿ½øÿÿÿÿ
+Ssquid:S18546"7Remove this useless assignment to local variable "str".(¡ö÷Õùÿÿÿÿ
+Ssquid:S18545"7Remove this useless assignment to local variable "str".(šÏÑêþÿÿÿÿ
+Ssquid:S1854;"7Remove this useless assignment to local variable "str".(ü«æîüÿÿÿÿ
+Ssquid:S1854:"7Remove this useless assignment to local variable "str".(¸™Øÿÿÿÿÿ
+Ssquid:S18549"7Remove this useless assignment to local variable "str".(£†Îüÿÿÿÿ
+Nsquid:S1854@"7Remove this useless assignment to local variable "str".(ÌŠˆÕ
+Nsquid:S1854?"7Remove this useless assignment to local variable "str".(É²Ú
+Nsquid:S1854>"7Remove this useless assignment to local variable "str".(¯×ùƒ
+Nsquid:S1854B"7Remove this useless assignment to local variable "str".(ŠÈ½›
+Ssquid:S1854F"7Remove this useless assignment to local variable "str".(¾ýäÇùÿÿÿÿ
+Ssquid:S1854O"7Remove this useless assignment to local variable "str".(õÀŠóÿÿÿÿÿ
+Ssquid:S1854T"7Remove this useless assignment to local variable "str".(€ßª·þÿÿÿÿ
+<squid:S2131Ž"Use "Boolean.toString" instead.(Ó¯øÇùÿÿÿÿ
