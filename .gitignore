@@ -1,23 +1,51 @@
-# Compiled class file
+######################
+# General
+######################
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+**/target/
+**/overlays/
+.oracle_jre_usage
+**/build
+**/out
+.gradle
+
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
+!gradle-wrapper.jar
 *.war
-*.nar
 *.ear
+*.db
+*.versionsBackup
+*.log
+**/*-pom.xml
+.yo-rc.json
 *.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+######################
+# Windows
+######################
+Thumbs.db
+Desktop.ini
+
+######################
+# IDEA
+######################
+**/*.iml
+.idea/*
+!.idea/runConfigurations/
+
+######################
+# Eclipse
+######################
+.project
+.metadata
+bin/**
+*.swp
+*~.nib
+.classpath
+.settings/
+.externalToolBuilders/
+*.launch
