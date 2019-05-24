@@ -1,6 +1,5 @@
-package hello.service;
+package hello.swagger;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
