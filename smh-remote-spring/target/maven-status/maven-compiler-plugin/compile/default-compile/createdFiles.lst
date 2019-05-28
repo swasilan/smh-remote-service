@@ -1,4 +1,4 @@
-hello\service\Swagger2Config.class
+hello\swagger\Swagger2Config.class
 hello\service\MyService.class
 hello\controller\HelloController.class
 hello\Application.class
