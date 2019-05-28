@@ -92,7 +92,7 @@
                 <configuration>
                     <verbose>true</verbose>
 
-                    <!-- Makes sure that we always use the latest base images. They may change in the mobi docker registy. -->
+                    <!-- Makes sure that we always use the latest base images. They may change in the swasi docker registy. -->
                     <imagePullPolicy>Never</imagePullPolicy>
 
                     <!-- Image Configuration -->
@@ -100,7 +100,7 @@
                         <image>
                             <!-- Image Name and Alias -->
                             <alias>remote-service</alias>
-                            <name>docker-registry.mobicorp.ch/mobi/smh/remote</name>
+                            <name>docker-registry.swasi.lan/swasi/smh/remote</name>
                             <build>
                                 <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
                                 <tags>
@@ -108,7 +108,7 @@
                                     <tag>latest</tag>
                                 </tags>
 
-                                <!-- Makes sure that we always use the latest base images. They may change in the mobi docker registy. -->
+                                <!-- Makes sure that we always use the latest base images. They may change in the swasi docker registy. -->
                                 <imagePullPolicy>Always</imagePullPolicy>
 
                                 <assembly>
@@ -216,6 +216,14 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-swagger-version}</version>
         </dependency>-->
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
+            <version>${pact-consumer.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 

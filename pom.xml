@@ -23,6 +23,7 @@
         <java.version>1.8</java.version>
         <springfox-swagger-version>2.9.2</springfox-swagger-version>
         <swagger-ui.version>3.22.1</swagger-ui.version>
+        <pact-consumer.version>3.5.0</pact-consumer.version>
 
         <!-- Docker Properties -->
         <docker.ip>192.168.99.100</docker.ip>

@@ -51,7 +51,7 @@
                             <images>
                                 <image>
                                     <alias>remote-service-spring</alias>
-                                    <name>docker-registry.mobicorp.ch/mobi/smh/remote:${project.version}</name>
+                                    <name>docker-registry.swasi.lan/swasi/smh/remote:${project.version}</name>
                                     <run>
                                         <namingStrategy>alias</namingStrategy>
 
@@ -73,7 +73,7 @@
                                     <name>rodolpheche/wiremock:2.23.2</name>
                                     <run>
                                         <namingStrategy>alias</namingStrategy>
-                                        <!-- Makes sure that we always use the latest base images. They may change in the mobi docker registy. -->
+                                        <!-- Makes sure that we always use the latest base images. They may change in the swasi docker registy. -->
                                         <imagePullPolicy>Always</imagePullPolicy>
                                         <network>
                                             <mode>custom</mode>
